@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미리날씨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="weather-app">
+      <section class="hero-panel" id="heroPanel">
+        <div class="stars" id="stars" aria-hidden="true"></div>
+        <div class="weather-effects" id="weatherEffects" aria-hidden="true"></div>
+        <div class="hero-top">
+          <a class="brand" href="#">미리날씨</a>
+          <button class="round-button" id="settingsButton" aria-label="온도 단위 전환" title="섭씨/화씨 전환">°C</button>
+        </div>
+
+        <div class="location-row">
+          <span class="pin">⌖</span>
+          <button class="location-button" id="locationButton" title="현재 위치 날씨 보기">서울특별시 <span>⌄</span></button>
+        </div>
+        <p class="location-detail" id="locationDetail" hidden></p>
+
+        <div class="main-weather">
+          <div class="main-copy">
+            <p class="date" id="currentDate">날씨 정보를 불러오는 중</p>
+            <h1 id="weatherLabel">맑음</h1>
+            <p class="temperature" id="currentTemperature">--<span>°</span></p>
+            <p class="feels-like">체감 온도 <strong id="feelsLike">--°</strong></p>
+          </div>
+          <div class="sun-illustration" aria-hidden="true">
+            <div class="ray ray-1"></div><div class="ray ray-2"></div><div class="ray ray-3"></div><div class="ray ray-4"></div>
+            <div class="sun"></div>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div><span>습도</span><strong id="humidity">--%</strong></div>
+          <div><span>바람</span><strong id="windSpeed">-- m/s</strong></div>
+          <div><span>자외선</span><strong id="uvIndex">--</strong></div>
+        </div>
+        <p class="hero-message" id="heroMessage">날씨 정보를 불러오는 중이에요.</p>
+      </section>
+
+      <section class="content-panel">
+        <header class="content-header">
+          <div>
+            <p class="eyebrow">GOOD AFTERNOON</p>
+            <h2>오늘의 날씨</h2>
+          </div>
+          <label class="search">
+            <span>⌕</span>
+            <input id="citySearch" aria-label="도시 검색" placeholder="도시 검색" autocomplete="off" />
+          </label>
+          <div class="search-results" id="searchResults" hidden></div>
+        </header>
+
+        <section class="forecast-section" aria-labelledby="hourly-title">
+          <div class="section-heading"><h3 id="hourly-title">시간별 예보</h3><button id="showMoreButton">전체 보기 →</button></div>
+          <div class="hourly-list" id="hourlyList" aria-live="polite"></div>
+        </section>
+
+        <div class="details-grid">
+          <section class="forecast-section week-card" aria-labelledby="week-title">
+            <div class="section-heading"><h3 id="week-title">주간 예보</h3></div>
+            <div class="week-list" id="weekList" aria-live="polite"></div>
+          </section>
+          <section class="forecast-section air-card" aria-labelledby="air-title">
+            <div class="section-heading"><h3 id="air-title">대기 정보</h3></div>
+            <div class="air-quality"><span class="air-ring" id="airFace">☺</span><div><p>미세먼지</p><strong id="airLabel">불러오는 중</strong><small id="pm10">-- ㎍/m³</small></div></div>
+            <div class="air-bar"><span></span></div>
+            <p class="air-note" id="airNote">대기 정보를 불러오는 중이에요.</p>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
