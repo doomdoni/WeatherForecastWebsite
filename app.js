@@ -112,7 +112,7 @@ function render() {
     const day = index === 0 ? "오늘" : new Intl.DateTimeFormat("ko-KR", { weekday:"short" }).format(new Date(`${date}T00:00:00`));
     return `<div><span>${day}</span><span class="mini-weather">${icon}</span><b>${name}</b><span><strong>${temperature(daily.temperature_2m_max[index])}</strong> <em>${temperature(daily.temperature_2m_min[index])}</em></span></div>`;
   }).join("");
-  if (air?.current) { const [airLabel, face, note] = aqiInfo(air.current.european_aqi); $("#airLabel").textContent = airLabel; $("#airFace").textContent = face; $("#pm10").textContent = `${Math.round(air.current.pm10)} ㎍/m³`; $("#airNote").textContent = note; }
+  if (air?.current) { const [fallbackLabel, face, note] = aqiInfo(air.current.european_aqi); $("#airLabel").textContent = air.label || fallbackLabel; $("#airFace").textContent = face; $("#pm10").textContent = `${Math.round(air.current.pm10)} ㎍/m³`; $("#airNote").textContent = `${air.station || "인근"} 측정소 기준 · ${note}`; }
   else { $("#airLabel").textContent = "별도 API 필요"; $("#airFace").textContent = "–"; $("#pm10").textContent = "기상청 제공 없음"; $("#airNote").textContent = "대기질은 에어코리아 API를 연결하면 표시할 수 있어요."; }
   updateSky();
 }
